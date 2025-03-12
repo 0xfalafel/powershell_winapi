@@ -109,7 +109,6 @@ function Copy-RawItem
 	if  ($CopyResult -eq $False)
 	{
 		# An error occured. Display the Win32 error set by CopyFile
-		# throw (New-Object ComponentModel.Win32Exception)
 		$lastError = [System.Runtime.InteropServices.Marshal]::GetLastWin32Error()  
 		throw(New-Object ComponentModel.Win32Exception($lastError))
 	}

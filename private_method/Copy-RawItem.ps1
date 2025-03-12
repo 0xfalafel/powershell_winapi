@@ -54,8 +54,8 @@ Param (
     if ($CopyResult -eq $False -and $HResult -ne 0)
     {
         # An error occured. Display Win32 error set by CopyFile
-        throw (New-Object ComponentModel.Win32Exception)
-	# WriteError 'Failed to copy file'
+        $lastError = [System.Runtime.InteropServices.Marshal]::GetLastWin32Error()
+        throw (New-Object ComponentModel.Win32Exception($lastError))
     }
     else
     {
